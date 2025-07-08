@@ -10,7 +10,6 @@
 <body class="bg-gray-50 text-gray-800 font-sans">
  
     <div class="min-h-screen flex">
-        {{-- Sidebar --}}
         <aside class="w-64 bg-gradient-to-b from-blue-700 to-blue-800 text-white shadow-lg">
             <div class="p-4 text-xl font-bold border-b border-blue-600">
                 ✨ Admin Panel
@@ -43,7 +42,6 @@
             </nav>
         </aside>
 
-        {{-- Main Content --}}
         <main class="flex-1 p-6">
             {{-- Header Bar --}}
 <div class="flex justify-between items-center mb-6">

@@ -13,7 +13,6 @@
         @endauth
     </div>
 
-    {{-- Filter & Pencarian --}}
     <form method="GET" class="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari proyek..." class="border-gray-300 rounded-md shadow-sm w-full">
 
@@ -32,7 +31,6 @@
         </select>
     </form>
 
-    {{-- Grid Proyek --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($projects as $project)
             <div class="bg-white rounded-xl shadow hover:shadow-lg transition duration-300 transform hover:-translate-y-1 overflow-hidden flex flex-col justify-between min-h-[480px]">
@@ -49,7 +47,6 @@
 
             <p class="text-sm text-gray-600 mb-2">{{ Str::limit($project->description, 80) }}</p>
 
-            {{-- Lokasi --}}
             @if ($project->lat && $project->lng)
                 <a href="https://www.google.com/maps?q={{ $project->lat }},{{ $project->lng }}" target="_blank" 
                    class="inline-block mb-2 text-green-700 text-sm hover:underline">
@@ -57,7 +54,6 @@
                 </a>
             @endif
 
-            {{-- Alat/Bahan --}}
             @if ($project->items && $project->items->count())
                 <div class="mt-2">
                     <p class="text-sm font-medium text-gray-700 mb-1">Alat / Bahan Dibutuhkan:</p>
@@ -96,7 +92,6 @@
         @endforelse
     </div>
 
-    {{-- Pagination --}}
     <div class="mt-8">
         {{ $projects->links() }}
     </div>

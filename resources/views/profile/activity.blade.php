@@ -6,7 +6,6 @@
 <div class="max-w-3xl mx-auto mt-8 space-y-4">
     <h1 class="text-2xl font-bold mb-4">📜 Riwayat Aktivitas</h1>
 
-    {{-- Filter Dropdown --}}
     <div class="mb-4">
     <form method="GET" action="{{ route('profile.activity') }}">
         <select name="type" onchange="this.form.submit()" class="rounded border-gray-300">
@@ -19,7 +18,6 @@
     </form>
 </div>
 
-    {{-- Daftar Aktivitas --}}
     @forelse($activities as $activity)
         <div class="bg-white p-4 rounded shadow">
             <p class="text-gray-700">

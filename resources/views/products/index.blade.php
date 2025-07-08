@@ -16,7 +16,6 @@
             @endauth
         </div>
 
-        {{-- Filter & Pencarian --}}
         <form method="GET" class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white p-4 rounded-xl shadow mb-8">
             <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="🔍 Cari produk..." class="border-gray-300 rounded-md shadow-sm w-full">
@@ -34,7 +33,6 @@
             </button>
         </form>
 
-        {{-- Produk UMKM --}}
         @if ($products->isEmpty())
             <p class="text-center text-gray-500 text-lg">Belum ada produk tersedia saat ini.</p>
         @else
@@ -89,7 +87,6 @@
     </div>
 </section>
 
-{{-- Leaflet JS --}}
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 

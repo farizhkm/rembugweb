@@ -27,7 +27,6 @@
 <body>
 <div class="min-h-screen bg-white relative">
 
-    {{-- Slide 1: Login Form --}}
     <section id="slide-login" class="h-screen flex items-center justify-center bg-gray-100">
         <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
             <h2 class="text-2xl font-bold mb-6 text-center">🔐 Masuk ke RembugWeb</h2>
@@ -63,7 +62,6 @@
         </div>
     </section>
 
-    {{-- Slide 2: Ide --}}
     <section class="py-20 bg-gradient-to-r from-green-100 to-green-200 fade-in">
         <div class="text-center">
             <h2 class="text-3xl font-bold mb-6">💡 Ide & Diskusi</h2>
@@ -71,7 +69,7 @@
         </div>
     </section>
 
-    {{-- Slide 3: Proyek --}}
+
     <section class="py-20 bg-gradient-to-r from-blue-100 to-blue-200 fade-in">
         <div class="text-center">
             <h2 class="text-3xl font-bold mb-6">🚀 Proyek</h2>
@@ -79,7 +77,6 @@
         </div>
     </section>
 
-    {{-- Slide 4: UMKM --}}
     <section class="py-20 bg-gradient-to-r from-yellow-100 to-yellow-200 fade-in">
         <div class="text-center">
             <h2 class="text-3xl font-bold mb-6">🛍️ UMKM</h2>
@@ -93,7 +90,6 @@
 </body>
 </div>
 
-    <!-- Scroll Animation Script -->
     <script>
         window.addEventListener('scroll', () => {
             const hero = document.getElementById('hero-container');

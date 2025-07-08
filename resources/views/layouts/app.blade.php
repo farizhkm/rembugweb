@@ -8,18 +8,15 @@
 
     <title>@yield('title', 'Platform Kolaborasi Masyarakat') - {{ config('app.name', 'RembugWeb') }}</title>
 
-    <!-- Font & Frameworks -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Leaflet Maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Custom Styles -->
     <style>
         body {
             background-color: #f9fafb;
@@ -40,7 +37,6 @@
     @stack('styles')
 </head>
 <body class="bg-gray-50 font-sans antialiased min-h-screen flex flex-col">
-    <!-- Navbar -->
     <nav class="bg-white shadow-sm border-b border-gray-200 fixed top-0 inset-x-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -97,7 +93,6 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     @yield('hero')
     <main class="pt-24 flex-grow">
         @yield('header')
@@ -113,10 +108,8 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <x-footer-section />
 
-    <!-- CSRF AJAX Setup -->
     <script>
         $.ajaxSetup({
             headers: {

@@ -9,33 +9,28 @@
     <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
         @csrf
 
-        <!-- Judul -->
         <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Judul Proyek</label>
             <input type="text" name="title" id="title" value="{{ old('title') }}" class="w-full rounded-md @error('title') border-red-500 @enderror">
             @error('title') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        <!-- Deskripsi -->
         <div class="mb-4">
             <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
             <textarea name="description" id="description" rows="5" class="w-full rounded-md @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
             @error('description') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        <!-- Gambar -->
         <div class="mb-4">
             <label for="image" class="block text-sm font-medium text-gray-700">Gambar</label>
             <input type="file" name="image" id="image" class="w-full text-gray-700 @error('image') border-red-500 @enderror">
             @error('image') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        <!-- Preview Gambar -->
         <div id="image-preview" class="mb-4 hidden">
             <img src="#" alt="Preview Gambar" class="h-40 rounded shadow">
         </div>
 
-        <!-- Tanggal -->
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
                 <label for="start_date" class="block text-sm font-medium text-gray-700">Tanggal Mulai</label>
@@ -49,7 +44,6 @@
             </div>
         </div>
 
-        <!-- Status -->
         <div class="mb-4">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <select name="status" id="status" class="w-full rounded-md @error('status') border-red-500 @enderror">
@@ -60,21 +54,18 @@
             @error('status') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        <!-- Kategori -->
         <div class="mb-4">
             <label for="category" class="block text-sm font-medium text-gray-700">Kategori Proyek</label>
             <input type="text" name="category" id="category" value="{{ old('category') }}" class="w-full rounded-md @error('category') border-red-500 @enderror" placeholder="Contoh: Taman, Jalan, dll">
             @error('category') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        <!-- Alamat Lengkap -->
         <div class="mb-4">
             <label for="address" class="block text-sm font-medium text-gray-700">Alamat Lengkap</label>
             <textarea name="address" id="address" rows="2" class="w-full rounded-md @error('address') border-red-500 @enderror" placeholder="Contoh: Jl. Merpati No. 2, RT 03 RW 05, Kelurahan ABC...">{{ old('address') }}</textarea>
             @error('address') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        <!-- Alat/Bahan -->
         <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700">Alat/Bahan yang Dibutuhkan</label>
             <div id="tools-wrapper">
@@ -83,7 +74,6 @@
             <button type="button" id="add-tool" class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">+ Tambah Alat/Bahan</button>
         </div>
 
-        <!-- Latitude & Longitude -->
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
                 <label for="lat" class="block text-sm font-medium text-gray-700">Latitude</label>
@@ -97,7 +87,6 @@
             </div>
         </div>
 
-        <!-- Peta Lokasi -->
         <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-1">Pilih Lokasi di Peta</label>
             <button type="button" id="get-location" class="mb-2 bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600">
@@ -106,7 +95,6 @@
             <div id="map" class="h-64 w-full rounded-md shadow-sm"></div>
         </div>
 
-        <!-- Tombol -->
         <div class="mt-6">
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Simpan Proyek</button>
         </div>
@@ -169,7 +157,6 @@
             }
         });
 
-        // Tambah input alat/bahan
         document.getElementById('add-tool').addEventListener('click', function () {
             const wrapper = document.getElementById('tools-wrapper');
             const input = document.createElement('input');
@@ -180,7 +167,6 @@
             wrapper.appendChild(input);
         });
 
-        // Preview Gambar
         document.getElementById('image').addEventListener('change', function (e) {
             const preview = document.getElementById('image-preview');
             const img = preview.querySelector('img');

@@ -58,13 +58,11 @@
                 <small class="text-gray-500">Gunakan format internasional tanpa + (contoh: 62812...)</small>
             </div>
 
-           {{-- Lokasi Interaktif --}}
     <div class="mb-4">
     <label class="block font-medium text-gray-700 mb-1">Lokasi UMKM</label>
     <div id="map" class="w-full h-64 rounded shadow mb-2"></div>
     <p id="lokasi-info" class="text-sm text-gray-600">📍 Mengambil lokasi...</p>
 
-    {{-- Hidden inputs untuk lat lng --}}
     <input type="hidden" name="latitude" id="latitude">
     <input type="hidden" name="longitude" id="longitude">
     </div>
@@ -92,7 +90,6 @@
         reader.readAsDataURL(event.target.files[0]);
     }
 
-    // Fungsi Lokasi + Map Drag
     window.onload = function () {
         if (!navigator.geolocation) {
             document.getElementById("lokasi-info").textContent = "⚠️ Browser tidak mendukung lokasi.";
@@ -120,7 +117,6 @@
                 draggable: true
             }).addTo(map).bindPopup("Geser marker untuk ubah lokasi.").openPopup();
 
-            // Saat marker digeser, update nilai lat-lng
             marker.on('dragend', function (e) {
                 const newLatLng = marker.getLatLng();
                 latInput.value = newLatLng.lat;

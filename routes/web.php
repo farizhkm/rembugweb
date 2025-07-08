@@ -18,42 +18,37 @@ use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Middleware\IsAdmin;
 
 
-// Halaman guest (belum login)
+
 Route::get('/', function () {
-    return view('guest'); // resources/views/guest.blade.php
+    return view('guest'); 
 })->middleware('guest')->name('landing');
 
 // Halaman setelah login
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
-    ->name('dashboard'); // ganti jadi 'dashboard' biar konsisten
+    ->name('dashboard'); 
     
 Route::get('/tentang-kami', function () {
     return view('about');
 })->name('about');
-//  Grup route yang hanya untuk user login
+
 Route::middleware('auth')->group(function () {
 
-    // Route untuk menampilkan halaman profil (index)
-    // Tampilkan profil sendiri
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
-    // Edit profil
+
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
-    // Update profil
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    // Hapus akun
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Ide
     Route::resource('ideas', IdeaController::class);
     Route::post('ideas/{idea}/vote', [IdeaController::class, 'vote'])->name('ideas.vote');
 
-    // Proyek
     Route::resource('projects', ProjectController::class);
-    // Produk UMKM untuk user login (kelola)
+
     Route::resource('products', ProductController::class);
 
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
@@ -61,7 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
-    // Komentar
+
     Route::post('/comments/reply-to/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
     Route::post('/comments/{model}/{id}', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
@@ -87,16 +82,16 @@ Route::middleware(['auth', \App\Http\Middleware\IsAdmin::class])
         
         Route::get('/dashboard', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
         Route::get('/activities', [ActivityController::class, 'adminIndex'])->name('activities.index');
-        //pdf
+
         Route::get('/dashboard/export/pdf', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'exportPdf'])->name('dashboard.export.pdf');
         Route::get('/users/export/pdf', [UserAdminController::class, 'exportPDF'])->name('users.export.pdf');
 
-        //user
+
         Route::get('/users', [\App\Http\Controllers\Admin\UserAdminController::class, 'index'])->name('users.index');
         Route::get('/users/{id}/edit', [\App\Http\Controllers\Admin\UserAdminController::class, 'edit'])->name('users.edit');
         Route::put('/users/{id}', [\App\Http\Controllers\Admin\UserAdminController::class, 'update'])->name('users.update');
         Route::delete('/users/{id}', [\App\Http\Controllers\Admin\UserAdminController::class, 'destroy'])->name('users.destroy');
-        // IDEAS
+
         Route::get('/ideas', [IdeaAdminController::class, 'index'])->name('ideas.index');
         Route::get('/ideas/{id}', [IdeaAdminController::class, 'show'])->name('ideas.show');
         Route::get('/ideas/{id}/edit', [IdeaAdminController::class, 'edit'])->name('ideas.edit');
@@ -105,14 +100,13 @@ Route::middleware(['auth', \App\Http\Middleware\IsAdmin::class])
 
         Route::put('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
 
-        // PROJECTS
         Route::get('/projects', [ProjectAdminController::class, 'index'])->name('projects.index');
         Route::get('/projects/{id}', [ProjectAdminController::class, 'show'])->name('projects.show');
         Route::get('/projects/{id}/edit', [ProjectAdminController::class, 'edit'])->name('projects.edit');
         Route::put('/projects/{id}', [ProjectAdminController::class, 'update'])->name('projects.update'); // ✅ ini yang kurang
         Route::put('/projects/comments/{comment}', [ProjectAdminController::class, 'updateComment'])->name('projects.comments.update');
         Route::delete('/projects/{id}', [ProjectAdminController::class, 'destroy'])->name('projects.destroy');
-         // Produk UMKM
+
         Route::get('/products', [ProductAdminController::class, 'index'])->name('products.index');
         Route::get('/products/{id}', [ProductAdminController::class, 'show'])->name('products.show');
         Route::get('/products/{id}/edit', [ProductAdminController::class, 'edit'])->name('products.edit');

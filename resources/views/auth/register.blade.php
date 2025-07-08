@@ -11,7 +11,6 @@
                 {{ session('status') }}
             </div>
         @endif
-            {{-- Peringatan Penting --}}
             <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 rounded shadow" role="alert">
                 ⚠️ <strong>Perhatian:</strong> Mohon isi data dengan benar dan lengkap. Informasi yang Anda daftarkan akan digunakan secara permanen di sistem.
             </div>
@@ -57,7 +56,6 @@
                 @enderror
             </div>
 
-            <!-- Email Address -->
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                 <input
@@ -106,7 +104,6 @@
             <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
         @enderror
         </div>
-            <!-- Password -->
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                 <input
@@ -122,7 +119,6 @@
                 @enderror
             </div>
 
-            <!-- Confirm Password -->
             <div class="mb-4">
                 <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Konfirmasi Password</label>
                 <input

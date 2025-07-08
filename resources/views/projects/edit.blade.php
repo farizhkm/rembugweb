@@ -15,7 +15,6 @@
         @csrf
         @method('PUT')
 
-        {{-- Judul --}}
         <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Judul Proyek</label>
             <input type="text" name="title" id="title" value="{{ old('title', $project->title) }}"
@@ -23,7 +22,6 @@
             @error('title') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        {{-- Deskripsi --}}
         <div class="mb-4">
             <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
             <textarea name="description" id="description" rows="5"
@@ -31,7 +29,6 @@
             @error('description') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        {{-- Gambar --}}
         <div class="mb-4">
             <label for="image" class="block text-sm font-medium text-gray-700">Gambar Proyek</label>
             <input type="file" name="image" id="image" class="w-full text-gray-700 @error('image') border-red-500 @enderror">
@@ -41,7 +38,6 @@
             @error('image') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        {{-- Tanggal Mulai dan Selesai --}}
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
                 <label for="start_date" class="block text-sm font-medium text-gray-700">Tanggal Mulai</label>
@@ -57,7 +53,6 @@
             </div>
         </div>
 
-        {{-- Status --}}
         <div class="mb-4">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <select name="status" id="status" class="w-full rounded-md @error('status') border-red-500 @enderror">
@@ -68,7 +63,6 @@
             @error('status') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        {{-- Kategori --}}
         <div class="mb-4">
             <label for="category" class="block text-sm font-medium text-gray-700">Kategori Proyek</label>
             <input type="text" name="category" id="category" value="{{ old('category', $project->category) }}"
@@ -76,7 +70,6 @@
             @error('category') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        {{-- Alamat --}}
         <div class="mb-4">
             <label for="address" class="block text-sm font-medium text-gray-700">Alamat Lengkap</label>
             <textarea name="address" id="address" rows="2"
@@ -84,7 +77,6 @@
             @error('address') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        {{-- Alat/Bahan --}}
         <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-1">Alat/Bahan yang Dibutuhkan</label>
             <div id="tools-wrapper">
@@ -99,8 +91,6 @@
             @error('tools') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-
-        {{-- Lokasi --}}
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
                 <label for="lat" class="block text-sm font-medium text-gray-700">Latitude</label>
@@ -114,7 +104,6 @@
             </div>
         </div>
 
-        {{-- Peta --}}
         <div class="mb-6">
             <label class="block text-sm font-medium text-gray-700 mb-1">Pilih Lokasi di Peta</label>
             <button type="button" id="get-location" class="mb-2 bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600">
@@ -123,7 +112,6 @@
             <div id="map" class="h-64 w-full rounded-md shadow-sm"></div>
         </div>
 
-        {{-- Tombol --}}
         <div>
             <button type="submit"
                 class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition duration-300">
@@ -188,8 +176,7 @@
     });
 </script>
 <script>
-    // Tambah input alat/bahan
-    document.addEventListener('DOMContentLoaded', () => {
+\    document.addEventListener('DOMContentLoaded', () => {
         const wrapper = document.getElementById('tools-wrapper');
         const button = document.getElementById('add-tool');
         button.addEventListener('click', () => {

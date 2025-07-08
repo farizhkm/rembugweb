@@ -6,7 +6,6 @@
 <section class="py-16 bg-gray-50">
     <div class="max-w-5xl mx-auto px-4">
         <div class="bg-white shadow-xl rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-            {{-- Gambar Produk --}}
             @if ($product->image)
                 <div class="h-full">
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
@@ -14,7 +13,6 @@
                 </div>
             @endif
 
-            {{-- Info Produk --}}
             <div class="p-6 flex flex-col justify-between">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ $product->name }}</h1>
@@ -25,7 +23,6 @@
                     </p>
                 </div>
 
-                {{-- Tombol WhatsApp --}}
                 @if ($product->whatsapp_number)
                     @php
                         $waMessage = urlencode("Halo, saya tertarik dengan produk *{$product->name}*. Apakah masih tersedia?");
@@ -41,7 +38,6 @@
             </div>
         </div>
 
-        {{-- Lokasi Produk --}}
         @if ($product->latitude && $product->longitude)
             <div class="mt-10">
                 <h2 class="text-lg font-semibold text-gray-700 mb-2">📍 Lokasi Produk</h2>
@@ -54,7 +50,6 @@
             </div>
         @endif
 
-        {{-- Tombol Aksi --}}
         @if (auth()->check() && auth()->id() === optional($product->umkm)->user_id)
             <div class="mt-8 flex flex-col sm:flex-row gap-4">
                 <a href="{{ route('products.edit', $product) }}"
@@ -73,11 +68,9 @@
             </div>
         @endif
 
-        {{-- Komentar --}}
         <div class="mt-12">
             <h2 class="text-lg font-semibold text-gray-700 mb-2">💬 Komentar ({{ $product->comments->count() }})</h2>
 
-            {{-- Form komentar utama --}}
             @auth
                 <form action="{{ route('comments.store', ['model' => 'products', 'id' => $product->id]) }}" method="POST" class="mb-6">
                     @csrf
@@ -86,7 +79,6 @@
                 </form>
             @endauth
 
-            {{-- Daftar komentar --}}
             @forelse ($product->comments->whereNull('parent_id') as $comment)
                 <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-md shadow-sm mb-3">
                     <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold uppercase">
@@ -109,7 +101,6 @@
                             </button>
                         </div>
 
-                        {{-- Form balasan --}}
                         @auth
                             <form id="reply-form-{{ $comment->id }}" action="{{ route('comments.reply', ['comment' => $comment->id]) }}" method="POST" class="mt-2 hidden">
                                 @csrf
@@ -118,7 +109,6 @@
                             </form>
                         @endauth
 
-                        {{-- Balasan --}}
                         @foreach ($comment->replies as $reply)
                             <div class="mt-4 ml-4 p-3 bg-white border border-gray-200 rounded-md">
                                 <p class="text-sm text-gray-700">{{ $reply->content }}</p>
@@ -134,7 +124,6 @@
     </div>
 </section>
 
-{{-- Leaflet Map --}}
 @if ($product->latitude && $product->longitude)
     @push('styles')
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />

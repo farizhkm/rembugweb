@@ -5,13 +5,11 @@
 @section('content')
 <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-md mt-8 space-y-8">
 
-    {{-- Gambar --}}
     @if ($project->image)
         <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}"
              class="w-full h-64 object-cover rounded-xl shadow">
     @endif
 
-    {{-- Judul & Info --}}
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
             <h1 class="text-3xl font-bold text-gray-800">{{ $project->title }}</h1>
@@ -24,7 +22,6 @@
         </span>
     </div>
 
-    {{-- Detail --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
             <h2 class="text-lg font-semibold text-gray-700 mb-1">📂 Kategori</h2>
@@ -36,13 +33,11 @@
         </div>
     </div>
 
-    {{-- Deskripsi --}}
     <div>
         <h2 class="text-lg font-semibold text-gray-700 mb-1">📝 Deskripsi Proyek</h2>
         <p class="text-gray-700">{{ $project->description }}</p>
     </div>
 
-    {{-- Lokasi --}}
     @if ($project->lat && $project->lng)
         <div>
             <h2 class="text-lg font-semibold text-gray-700 mb-2">📍 Lokasi Proyek</h2>
@@ -52,11 +47,9 @@
         </div>
     @endif
 
-    {{-- Komentar --}}
     <div>
         <h2 class="text-lg font-semibold text-gray-700 mb-2">💬 Komentar ({{ $project->comments->count() }})</h2>
 
-        {{-- Form komentar utama --}}
         @auth
             <form action="{{ route('comments.store', ['model' => 'projects', 'id' => $project->id]) }}" method="POST" class="mb-6">
                 @csrf
@@ -65,7 +58,6 @@
             </form>
         @endauth
 
-        {{-- List komentar --}}
         @forelse ($project->comments->whereNull('parent_id') as $comment)
             <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-md shadow-sm mb-3">
                 <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold uppercase">
@@ -84,13 +76,11 @@
                             </button>
                         </form>
 
-                        <!-- Balas -->
                         <button type="button" class="text-gray-500 hover:underline" onclick="toggleReply({{ $comment->id }})">
                             💬 Balas
                         </button>
                     </div>
 
-                    <!-- Form balasan -->
                     @auth
                     <form id="reply-form-{{ $comment->id }}" action="{{ route('comments.reply', ['comment' => $comment->id]) }}" method="POST" class="mt-2 hidden">
                         @csrf
@@ -99,7 +89,6 @@
                     </form>
                     @endauth
 
-                    <!-- Balasan -->
                     @foreach ($comment->replies as $reply)
                         <div class="mt-4 ml-4 p-3 bg-white border border-gray-200 rounded-md">
                             <p class="text-sm text-gray-700">{{ $reply->content }}</p>

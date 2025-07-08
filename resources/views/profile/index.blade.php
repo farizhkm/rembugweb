@@ -7,11 +7,10 @@
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Profil Saya</h1>
 
     <div class="flex items-center gap-6 mb-6">
-        {{-- Foto Profil --}}
         @php
             $profilePicture = $user->profile_picture 
                 ? asset('storage/' . $user->profile_picture) 
-                : asset('default-profile.png'); // fallback default jika tidak ada
+                : asset('default-profile.png'); 
         @endphp
 
         <img src="{{ $profilePicture }}" alt="Foto Profil"

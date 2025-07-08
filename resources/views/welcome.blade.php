@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-<!-- Fitur Ringkas -->
+
 <section class="bg-white py-16">
     <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
         <div class="transition transform hover:scale-105">
@@ -58,7 +58,7 @@
     </div>
 </section>
 
-<!-- Ide Terbaru -->
+
 <section class="bg-gray-50 py-16">
     <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">💡 Ide Terbaru</h2>
@@ -76,7 +76,6 @@
     </div>
 </section>
 
-<!-- Proyek Terbaru -->
 <section class="bg-white py-16">
     <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">🛠️ Proyek Terbaru</h2>
@@ -95,7 +94,7 @@
     </div>
 </section>
 
-<!-- UMKM Terbaru -->
+
 <section class="bg-gray-50 py-16">
     <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">🏪 UMKM Terbaru</h2>

@@ -13,7 +13,6 @@
         @csrf
         @method('put')
 
-        {{-- Password Lama --}}
         <div>
             <x-input-label for="current_password" :value="__('Password Lama')" />
             <x-text-input id="current_password" name="current_password" type="password"
@@ -21,7 +20,6 @@
             <x-input-error class="mt-2" :messages="$errors->get('current_password')" />
         </div>
 
-        {{-- Password Baru --}}
         <div>
             <x-input-label for="password" :value="__('Password Baru')" />
             <x-text-input id="password" name="password" type="password"
@@ -29,7 +27,6 @@
             <x-input-error class="mt-2" :messages="$errors->get('password')" />
         </div>
 
-        {{-- Konfirmasi Password --}}
         <div>
             <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" />
             <x-text-input id="password_confirmation" name="password_confirmation" type="password"

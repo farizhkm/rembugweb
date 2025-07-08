@@ -81,7 +81,6 @@
     </div>
 </section>
 
-{{-- Peta --}}
 @push('styles')
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 @endpush
